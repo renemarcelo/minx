@@ -1,11 +1,11 @@
 const autoprefixer = require('autoprefixer');
 const browserSync  = require('browser-sync');
-const csslint      = require('gulp-csslint');
-const del          = require('del');
+// const csslint      = require('gulp-csslint');
+// const del          = require('del');
 const gulp         = require('gulp');
-const postcss      = require('gulp-postcss');
-const sass         = require('gulp-sass');
-const scsslint     = require('gulp-scss-lint');
+// const postcss      = require('gulp-postcss');
+// const sass         = require('gulp-sass');
+// const scsslint     = require('gulp-scss-lint');
 
 
 //=========================================================
@@ -40,27 +40,27 @@ const config = {
     port: 3000
   },
 
-  cssLintConfig: './.csslintrc',
+  // cssLintConfig: './.csslintrc',
+  //
+  // sass: {
+  //   errLogToConsole: true,
+  //   includePaths: ['src'],
+  //   outputStyle: 'nested',
+  //   precision: 10,
+  //   sourceComments: false
+  // },
 
-  sass: {
-    errLogToConsole: true,
-    includePaths: ['src'],
-    outputStyle: 'nested',
-    precision: 10,
-    sourceComments: false
-  },
-
-  scssLintConfig: './.scss-lint.yml'
+  // scssLintConfig: './.scss-lint.yml'
 };
 
 
 //=========================================================
 //  TASKS
 //---------------------------------------------------------
-gulp.task('clean.examples', () => del(paths.examples.css));
+// gulp.task('clean.examples', () => del(paths.examples.css));
 
 
-gulp.task('clean.target', () => del(paths.target));
+// gulp.task('clean.target', () => del(paths.target));
 
 
 gulp.task('lint.css', () => {
@@ -76,14 +76,14 @@ gulp.task('lint.scss', () => {
 });
 
 
-gulp.task('sass', () => {
-  return gulp.src(paths.src.sass)
-    .pipe(sass(config.sass))
-    .pipe(postcss([
-      autoprefixer(config.autoprefixer)
-    ]))
-    .pipe(gulp.dest(paths.target));
-});
+// gulp.task('sass', () => {
+//   return gulp.src(paths.src.sass)
+//     .pipe(sass(config.sass))
+//     .pipe(postcss([
+//       autoprefixer(config.autoprefixer)
+//     ]))
+//     .pipe(gulp.dest(paths.target));
+// });
 
 
 gulp.task('sass.examples', () => {
@@ -103,9 +103,9 @@ gulp.task('serve', done => {
 
 
 gulp.task('default', gulp.series(
-  'clean.examples',
-  'clean.target',
-  'sass.examples',
+  // 'clean.examples',
+  // 'clean.target',
+  // 'sass.examples',
   function watch(){
     gulp.watch(paths.src.sass, gulp.task('sass.examples'));
   }
