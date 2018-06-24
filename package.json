@@ -1,34 +1,31 @@
 {
   "name": "minx",
-  "version": "0.4.15",
-  "description": "Sassy mixins and utilities",
-  "homepage": "https://github.com/r-park/minx",
-  "repository": "https://github.com/r-park/minx.git",
-  "author": {
-    "name": "Richard Park",
-    "email": "objectiv@gmail.com"
-  },
-  "license": "MIT",
-  "scripts": {
-    "start": "./node_modules/.bin/gulp"
+  "version": "0.5.0",
+  "description": "Sass Mixins and Utils based on https://github.com/r-park/minx.git",
+  "main": "gulpfile.js",
+  "dependencies": {
+    "gulp": "^4.0.0"
   },
   "devDependencies": {
-    "autoprefixer": "~6.2.1",
-    "browser-sync": "~2.10.1",
-    "gulp-csslint": "~0.2.0",
-    "del": "~2.2.0",
-    "gulp": "gulpjs/gulp.git#4.0",
-    "gulp-postcss": "~6.0.1",
-    "gulp-sass": "~2.1.1",
-    "gulp-scss-lint": "~0.3.8",
-    "gulp-util": "~3.0.7"
+    "autoprefixer": "^8.6.3"
+  },
+  "scripts": {
+    "start": "./node_modules/gulp/bin/gulp.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/renemarcelo/minx.git"
   },
   "keywords": [
-    "css",
-    "grid",
-    "mixins",
     "responsive",
     "sass",
-    "scss"
-  ]
+    "grid"
+  ],
+  "author": "Rene M. Paccha",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/renemarcelo/minx/issues"
+  },
+  "homepage": "https://github.com/renemarcelo/minx#readme",
+  "browserslist": ["last 3 versions", "Firefox ESR"]
 }
