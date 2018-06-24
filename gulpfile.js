@@ -1,7 +1,7 @@
 const autoprefixer = require('autoprefixer');
 const browserSync  = require('browser-sync');
 const csslint      = require('gulp-csslint');
-// const del          = require('del');
+const del          = require('del');
 const gulp         = require('gulp');
 const postcss      = require('gulp-postcss');
 const sass         = require('gulp-sass');
@@ -29,9 +29,9 @@ const paths = {
 //  CONFIG
 //---------------------------------------------------------
 const config = {
-  autoprefixer: {
-    browsers: ['last 3 versions', 'Firefox ESR']
-  },
+  // autoprefixer: {
+  //   browsers: ['last 3 versions', 'Firefox ESR']
+  // },
 
   browserSync: {
     files: [`${paths.target}/**/*`],
@@ -57,10 +57,10 @@ const config = {
 //=========================================================
 //  TASKS
 //---------------------------------------------------------
-// gulp.task('clean.examples', () => del(paths.examples.css));
+gulp.task('clean.examples', () => del(paths.examples.css));
 
 
-// gulp.task('clean.target', () => del(paths.target));
+gulp.task('clean.target', () => del(paths.target));
 
 
 gulp.task('lint.css', () => {
@@ -103,8 +103,8 @@ gulp.task('serve', done => {
 
 
 gulp.task('default', gulp.series(
-  // 'clean.examples',
-  // 'clean.target',
+  'clean.examples',
+  'clean.target',
   'sass.examples',
   function watch(){
     gulp.watch(paths.src.sass, gulp.task('sass.examples'));
