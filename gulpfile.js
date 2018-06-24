@@ -1,11 +1,11 @@
 const autoprefixer = require('autoprefixer');
 const browserSync  = require('browser-sync');
-// const csslint      = require('gulp-csslint');
+const csslint      = require('gulp-csslint');
 // const del          = require('del');
 const gulp         = require('gulp');
-// const postcss      = require('gulp-postcss');
-// const sass         = require('gulp-sass');
-// const scsslint     = require('gulp-scss-lint');
+const postcss      = require('gulp-postcss');
+const sass         = require('gulp-sass');
+const scsslint     = require('gulp-scss-lint');
 
 
 //=========================================================
@@ -40,17 +40,17 @@ const config = {
     port: 3000
   },
 
-  // cssLintConfig: './.csslintrc',
+  cssLintConfig: './.csslintrc',
   //
-  // sass: {
-  //   errLogToConsole: true,
-  //   includePaths: ['src'],
-  //   outputStyle: 'nested',
-  //   precision: 10,
-  //   sourceComments: false
-  // },
+  sass: {
+    errLogToConsole: true,
+    includePaths: ['src'],
+    outputStyle: 'nested',
+    precision: 10,
+    sourceComments: false
+  },
 
-  // scssLintConfig: './.scss-lint.yml'
+  scssLintConfig: './.scss-lint.yml'
 };
 
 
@@ -66,7 +66,7 @@ const config = {
 gulp.task('lint.css', () => {
   return gulp.src(`${paths.examples.css}/**/*.css`)
     .pipe(csslint(config.cssLintConfig))
-    .pipe(csslint.reporter());
+    .pipe(csslint.formatter());
 });
 
 
@@ -76,14 +76,14 @@ gulp.task('lint.scss', () => {
 });
 
 
-// gulp.task('sass', () => {
-//   return gulp.src(paths.src.sass)
-//     .pipe(sass(config.sass))
-//     .pipe(postcss([
-//       autoprefixer(config.autoprefixer)
-//     ]))
-//     .pipe(gulp.dest(paths.target));
-// });
+gulp.task('sass', () => {
+  return gulp.src(paths.src.sass)
+    .pipe(sass(config.sass))
+    .pipe(postcss([
+      autoprefixer(config.autoprefixer)
+    ]))
+    .pipe(gulp.dest(paths.target));
+});
 
 
 gulp.task('sass.examples', () => {
@@ -105,7 +105,7 @@ gulp.task('serve', done => {
 gulp.task('default', gulp.series(
   // 'clean.examples',
   // 'clean.target',
-  // 'sass.examples',
+  'sass.examples',
   function watch(){
     gulp.watch(paths.src.sass, gulp.task('sass.examples'));
   }
